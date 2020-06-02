@@ -133,11 +133,13 @@ SELECT id_telephone_user, COUNT(price) AS count_price FROM payment GROUP BY id_t
 
 --SELECT GRUOP BY + HAVING
 
-SELECT id_telephone_user, MIN(price) AS min_price FROM payment GROUP BY id_telephone_user HAVING MIN(price) < 800;
-
-SELECT id_telephone_user, MAX(price) AS max_price FROM payment GROUP BY id_telephone_user HAVING MAX(price) > 500;
+--SELECT id_telephone_user, MIN(price) AS min_price FROM payment GROUP BY id_telephone_user HAVING MIN(price) < 800;
 
 SELECT id_telephone_user, SUM(price) AS sum_price FROM payment GROUP BY id_telephone_user HAVING SUM(price) > 800;
+
+SELECT tariff, COUNT(id_telephone) AS sum_telephone FROM telephone GROUP BY tariff HAVING COUNT(id_telephone) > 1;
+
+SELECT id_telephone, COUNT(id_type_of_service) AS sum_service FROM telephone_service GROUP BY id_telephone HAVING COUNT(id_type_of_service) > 1;
 
 --SELECT JOIN
 
@@ -155,7 +157,7 @@ SELECT * FROM telephone_user FULL OUTER JOIN payment ON telephone_user.id_teleph
 
 --SUBQUERIES
 
-SELECT * FROM telephone_user WHERE birthday NOT IN('1995-02-01T12:12:12', '2005-05-13T23:12:13');
+SELECT * FROM telephone WHERE id_telephone_user IN(SELECT TOP 3 id_telephone_user FROM telephone_user);
 
 SELECT id_telephone_user, first_name, last_name,
 (SELECT region_registration FROM telephone WHERE telephone.id_telephone_user = telephone_user.id_telephone_user) AS region 
