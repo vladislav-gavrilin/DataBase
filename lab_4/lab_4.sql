@@ -25,7 +25,7 @@ INNER JOIN room_in_booking ON room_in_booking.id_booking = booking.id_booking
 INNER JOIN room ON room.id_room = room_in_booking.id_room
 INNER JOIN room_category ON room_category.id_room_category = room.id_room_category
 INNER JOIN hotel ON hotel.id_hotel = room.id_hotel
-WHERE hotel.name = 'Космос' AND room_category.name = 'Люкс' AND (room_in_booking.checkin_date <= '2019-04-01' AND room_in_booking.checkout_date >= '2019-04-01');
+WHERE hotel.name = 'Космос' AND room_category.name = 'Люкс' AND (room_in_booking.checkin_date <= '2019-04-01' AND room_in_booking.checkout_date > '2019-04-01');
 
 -- 3. Дать список свободных номеров всех гостиниц на 22 апреля.
 
