@@ -99,3 +99,10 @@ CREATE NONCLUSTERED INDEX [IX_order_id_pharmacy] ON [dbo].[order]
 (
 	id_pharmacy ASC
 )
+INCLUDE ([date], [quantity])
+
+CREATE NONCLUSTERED INDEX [IX_dealer_id_company] ON [dbo].[dealer]
+(
+	id_company ASC
+)
+INCLUDE ([name])
